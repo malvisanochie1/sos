@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SOS Premiere - Management Portal</title>
+    <link rel="stylesheet" href="./main.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.css"
+      rel="stylesheet"
+    />
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              gold: {
+                500: "#D4A417",
+                600: "#C49615",
+              },
+              gray: {
+                bg: "#EBEBEB",
+                input: "#F4F4F4",
+              },
+            },
+            fontFamily: {
+              serif: ["inter", "serif"],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      /* Custom checkbox styling */
+      input[type="checkbox"]:checked {
+        background-color: #3b82f6;
+        border-color: #3b82f6;
+      }
+    </style>
+  </head>
+  <body class="min-h-screen bg-gray-50 flex items-center justify-center p-4">
+    <div
+      class="w-full max-w-xl sm:bg-white rounded-2xl sm:shadow-lg sm:px-10 md:px-16 lg:px-20 py-10"
+    >
+      <!-- Logo Section -->
+      <div class="flex items-center justify-center gap-1 mb-6">
+        <img src="/src/assets/logo.png" alt="Logo" />
+      </div>
+
+      <!-- Title -->
+      <h1 class="text-2xl font-serif text-center text-gray-800 mb-8">
+        Management Portal
+      </h1>
+
+      <!-- Form -->
+      <form class="space-y-5">
+        <!-- Email Field -->
+        <div>
+          <label class="block text-sm text-gray-700 mb-1"
+            >Email address/username</label
+          >
+          <input
+            type="email"
+            placeholder="name@example.com"
+            class="w-full px-4 py-2 bg-gray-input rounded-lg text-gray-600 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow"
+          />
+        </div>
+
+        <!-- Password Field -->
+        <div>
+          <label class="block text-sm text-gray-700 mb-1">Password</label>
+          <div class="relative">
+            <input
+              type="password"
+              id="password"
+              placeholder="Enter your password"
+              class="w-full px-4 py-2 bg-gray-input rounded-lg text-gray-600 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gold-500/30 pr-12"
+            />
+            <div
+              class="absolute top-0 right-0 h-full w-20 grid place-content-center"
+            >
+              <button
+                type="button"
+                onclick="togglePassword()"
+                class="text-gray-400 hover:text-gray-600"
+              >
+                <svg
+                  id="eye-icon"
+                  class="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                  />
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Remember Me & Forgot Password -->
+        <div class="flex items-center justify-between">
+          <label class="flex items-center gap-2 cursor-pointer">
+            <input
+              type="checkbox"
+              checked
+              class="w-4 h-4 rounded border-gray-300 text-blue-500 focus:ring-blue-500 cursor-pointer"
+            />
+            <span class="text-sm text-gray-700">Remember me</span>
+          </label>
+          <a
+            href="#"
+            class="text-sm text-gold-500 hover:text-gold-600 hover:underline"
+            >Forgot password?</a
+          >
+        </div>
+
+        <!-- Login Button -->
+        <button
+          type="submit"
+          class="w-full py-2 bg-gold-500 hover:bg-gold-600 text-black font-medium rounded-full transition-colors duration-200 mt-2"
+        >
+          Log In
+        </button>
+      </form>
+
+      <!-- Sign Up Link -->
+      <p class="text-center text-sm text-gray-600 mt-6">
+        Don't have an account?
+        <a
+          href="/src/signup.html"
+          class="text-gold-500 hover:text-gold-600 hover:underline"
+          >sign up</a
+        >
+      </p>
+
+      <!-- Language Selector -->
+      <div class="relative flex justify-center mt-6">
+        <div class="relative">
+          <button
+            type="button"
+            id="language-btn"
+            onclick="toggleLanguageDropdown()"
+            class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 transition-colors"
+          >
+            <img
+              id="selected-flag"
+              src="/src/assets/us_flag.png"
+              alt="US flag"
+              class="w-5 h-4 object-cover rounded-sm"
+            />
+            <span id="selected-language" class="text-sm text-gray-700"
+              >English</span
+            >
+            <svg
+              id="dropdown-chevron"
+              class="w-4 h-4 text-gray-500 transition-transform duration-200"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M19 9l-7 7-7-7"
+              />
+            </svg>
+          </button>
+
+          <!-- Dropdown Menu -->
+          <div
+            id="language-dropdown"
+            class="absolute bottom-full left-1/2 -translate-x-1/2 mb-1 w-36 bg-white rounded-lg shadow-lg border border-gray-200 overflow-hidden hidden"
+          >
+            <button
+              type="button"
+              onclick="selectLanguage('English', '/src/assets/us_flag.png', 'US flag')"
+              class="w-full flex items-center gap-2 px-3 py-2 hover:bg-gray-100 transition-colors"
+            >
+              <img
+                src="/src/assets/us_flag.png"
+                alt="US flag"
+                class="w-5 h-4 object-cover rounded-sm"
+              />
+              <span class="text-sm text-gray-700">English</span>
+            </button>
+            <button
+              type="button"
+              onclick="selectLanguage('French', '/src/assets/france_flag.webp', 'France flag')"
+              class="w-full flex items-center gap-2 px-3 py-2 hover:bg-gray-100 transition-colors"
+            >
+              <img
+                src="/src/assets/france_flag.webp"
+                alt="France flag"
+                class="w-5 h-4 object-cover rounded-sm"
+              />
+              <span class="text-sm text-gray-700">French</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.js"></script>
+    <script src="/src/main.js"></script>
+  </body>
+</html>

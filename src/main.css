@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+body {
+  font-family: "Inter", sans-serif;
+}
+
+/* Hide scrollbar on mobile */
+@media (max-width: 768px) {
+  /* For Chrome, Safari, Edge */
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* For Firefox */
+  * {
+    scrollbar-width: none;
+  }
+
+  /* For IE and Edge */
+  html {
+    -ms-overflow-style: none;
+  }
+}
+@theme {
+  --color-dark: #151b2d;
+  --color-dark-400: #787a80;
+  --color-dark-500: #4a4c50;
+  --color-dark-600D: #09244b;
+  --color-yellow: #d49401;
+
+  --color-gray: #07111b;
+}
+
+/* Hide number input spinners */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+/* Custom checkbox styling */
+input[type="checkbox"]:checked {
+  background-color: #3b82f6;
+  border-color: #3b82f6;
+}
